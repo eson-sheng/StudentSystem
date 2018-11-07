@@ -1,0 +1,21 @@
+-- 数据库建立
+CREATE DATABASE `school` DEFAULT charset=utf8;
+
+-- 用户表建立
+DROP TABLE IF EXISTS `stu`;
+CREATE TABLE IF NOT EXISTS `stu`(
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `name` VARCHAR(32) NOT NULL COMMENT '姓名',
+    `number` VARCHAR(32) NOT NULL COMMENT '学号',
+    `sex` VARCHAR(32) NOT NULL COMMENT '性别',
+    `age` VARCHAR(32) NOT NULL COMMENT '年龄',
+    `cate` VARCHAR(32) NOT NULL COMMENT '学院',
+    `class` VARCHAR(32) NOT NULL COMMENT '班级',
+    `major` VARCHAR(32) NOT NULL COMMENT '专业',
+    `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `updata_time` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+    `status` TINYINT(1) NOT NULL DEFAULT '1' COMMENT '状态(单选):0=未激活,1=激活',
+    PRIMARY KEY(`id`),
+    UNIQUE KEY `id` (`id`),
+    UNIQUE KEY `name` (`name`) USING BTREE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户管理';
